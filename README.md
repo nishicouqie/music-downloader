@@ -8,7 +8,7 @@
 
 白色简约风的 Windows 桌面应用，不需要懂技术，打开就能用。
 
-[**⬇ 下载 Windows 版**](https://github.com/nishicouqie/music-downloader/releases/latest)　·　[**🌐 项目主页**](https://nishicouqie.github.io/music-downloader/)　·　[常见问题](#常见问题)
+[**⬇ 一键下载 Windows 版**](https://github.com/nishicouqie/music-downloader/releases/latest/download/music-downloader-win64.zip)　·　[**🌐 项目主页**](https://nishicouqie.github.io/music-downloader/)　·　[常见问题](#常见问题)
 
 ![界面预览](docs/img/done.png)
 
@@ -40,7 +40,7 @@
 
 ## 快速开始
 
-1. 到 [Releases](https://github.com/nishicouqie/music-downloader/releases/latest) 下载 `音乐下载器-v2.0-win64.zip`
+1. 点上面的「一键下载」按钮，或到 [Releases](https://github.com/nishicouqie/music-downloader/releases/latest) 下载 `music-downloader-win64.zip`（约 12 MB）
 2. 解压到**任意普通目录**（比如 `D:\音乐下载器\`）
 3. 双击 `音乐下载器.exe`
 4. 搜索歌名 → 点「下载」
