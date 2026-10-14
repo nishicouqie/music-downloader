@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>音乐下载器 — 搜歌、下无损、封面歌词自动写好</title>
+<meta name="description" content="白色简约风的 Windows 桌面音乐下载工具。下载无损 FLAC / 320K MP3 的同时，自动写入封面、双语时间轴歌词、专辑歌手等完整标签。开箱即用，无需 Python。">
+<meta property="og:title" content="音乐下载器">
+<meta property="og:description" content="搜歌 → 下载无损 → 封面、歌词、专辑信息自动写好">
+<meta property="og:image" content="img/done.png">
+<link rel="icon" href="img/icon.png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="#">
+      <img src="img/icon.png" alt="" width="28" height="28">
+      <span>音乐下载器</span>
+    </a>
+    <nav class="nav-links">
+      <a href="#features">功能</a>
+      <a href="#shots">截图</a>
+      <a href="#start">使用</a>
+      <a href="#faq">问答</a>
+      <a class="gh" href="https://github.com/nishicouqie/music-downloader" target="_blank" rel="noopener">
+        <svg viewBox="0 0 16 16" width="17" height="17" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+        <span>GitHub</span>
+      </a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="pill">Windows 桌面版 · 开箱即用 · 无需 Python</div>
+    <h1>搜歌，下载，<br>封面和歌词自动写好</h1>
+    <p class="lead">
+      从网上下载的音乐，多半是「未知艺术家 + 乱码文件名 + 没有封面」。
+      这个工具把这一整套活儿全包了 —— 下载无损音频的同时，把封面、双语时间轴歌词、
+      专辑、歌手、年份、流派一次性写进文件里。
+    </p>
+    <div class="cta">
+      <a class="btn btn-primary" href="https://github.com/nishicouqie/music-downloader/releases/latest">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0l-4.5-4.5M12 15l4.5-4.5M4 20h16"/></svg>
+        下载 Windows 版
+      </a>
+      <a class="btn btn-ghost" href="https://github.com/nishicouqie/music-downloader">
+        查看源码
+      </a>
+    </div>
+    <p class="note">约 24 MB · 解压即用 · 首次运行 SmartScreen 会提示，点「仍要运行」即可</p>
+  </div>
+  <div class="wrap">
+    <figure class="shot hero-shot">
+      <img src="img/done.png" alt="音乐下载器主界面：下载完成，封面与歌词已写入" loading="eager">
+      <figcaption>下载完成 —— 每个文件实际写入了什么，卡片上直接列出来</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="section" id="features">
+  <div class="wrap">
+    <h2 class="h2">该有的都有</h2>
+    <p class="h2sub">没有花哨的功能，就是把「下载音乐」这件事一次做对。</p>
+    <div class="grid">
+      <div class="card">
+        <div class="ico">🎧</div>
+        <h3>最高音质</h3>
+        <p>优先取无损 FLAC（44.1kHz / 16bit，约 1090kbps），也可选 320K MP3。频谱验证过是真无损，不是升频的假货。</p>
+      </div>
+      <div class="card">
+        <div class="ico">🖼</div>
+        <h3>封面自动挑最清晰的</h3>
+        <p>同时在网易云和 iTunes 里找同一张专辑，自动用分辨率最高的那张，最高可达 3000×3000。</p>
+      </div>
+      <div class="card">
+        <div class="ico">🎵</div>
+        <h3>歌词带完整时间轴</h3>
+        <p>日文原词 + 中文翻译按时间戳对齐合并成双语 LRC。MP3 还会写入 SYLT 逐行同步歌词，foobar2000 会跟着高亮。</p>
+      </div>
+      <div class="card">
+        <div class="ico">🔑</div>
+        <h3>VIP 账号像 API Key 一样管理</h3>
+        <p>Cookie 可保存多组、随时切换，每组都能一键测试是否有效、是什么会员等级、能不能真的取到无损直链。</p>
+      </div>
+      <div class="card">
+        <div class="ico">📊</div>
+        <h3>进度看得见</h3>
+        <p>实时百分比、下载速度、剩余时间，外加六个步骤的流程指示器，卡在哪一步一目了然。</p>
+      </div>
+      <div class="card">
+        <div class="ico">💬</div>
+        <h3>报错说人话</h3>
+        <p>每条错误都给「原因 + 该怎么办」两行，还能展开看技术详情。不用去猜为什么失败了。</p>
+      </div>
+      <div class="card">
+        <div class="ico">🔁</div>
+        <h3>三级音源自动降级</h3>
+        <p>官方通道 → 聚合接口 → 兜底源，逐级自动重试，每一级的失败原因都记录下来一起告诉你。</p>
+      </div>
+      <div class="card">
+        <div class="ico">⌨️</div>
+        <h3>还有命令行版</h3>
+        <p>附带 <code>music_dl.py</code>，支持从列表文件批量下载，与界面版共用同一套引擎。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section alt" id="shots">
+  <div class="wrap">
+    <h2 class="h2">长什么样</h2>
+    <p class="h2sub">白色底、细灰线、单一靛蓝点缀。没有一处多余的装饰。</p>
+    <div class="shots">
+      <figure class="shot">
+        <img src="img/search.png" alt="搜索结果列表" loading="lazy">
+        <figcaption><b>搜索</b>　带封面缩略图，自动标出最匹配的一条，VIP 曲目有标记</figcaption>
+      </figure>
+      <figure class="shot">
+        <img src="img/progress.png" alt="下载进行中" loading="lazy">
+        <figcaption><b>下载中</b>　百分比、速度、剩余时间、当前阶段</figcaption>
+      </figure>
+      <figure class="shot">
+        <img src="img/settings.png" alt="设置面板" loading="lazy">
+        <figcaption><b>设置</b>　多组账号管理、音源策略、格式与封面选项</figcaption>
+      </figure>
+      <figure class="shot">
+        <img src="img/error.png" alt="错误提示" loading="lazy">
+        <figcaption><b>报错</b>　讲清楚原因和解决办法，可展开技术细节</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="start">
+  <div class="wrap narrow">
+    <h2 class="h2">三步用起来</h2>
+    <ol class="steps">
+      <li>
+        <span class="num">1</span>
+        <div>
+          <h3>下载并解压</h3>
+          <p>到 <a href="https://github.com/nishicouqie/music-downloader/releases/latest" target="_blank" rel="noopener">Releases</a>
+             下载压缩包，解压到<b>任意普通目录</b>，比如 <code>D:\音乐下载器\</code>。</p>
+        </div>
+      </li>
+      <li>
+        <span class="num">2</span>
+        <div>
+          <h3>双击运行</h3>
+          <p>运行 <code>音乐下载器.exe</code>。第一次 Windows 会拦一下，点「更多信息 → 仍要运行」。</p>
+        </div>
+      </li>
+      <li>
+        <span class="num">3</span>
+        <div>
+          <h3>搜歌、点下载</h3>
+          <p>歌名、歌手、网易云链接、歌曲 ID 都能直接粘。文件默认存到 <code>D:\音乐下载\</code>。</p>
+        </div>
+      </li>
+    </ol>
+
+    <div class="callout">
+      <h3>💡 想要官方无损通道，就配一个自己的 VIP 账号</h3>
+      <p>不配也能用，程序会自动走第三方接口。但配上你自己<b>已经付费购买</b>的网易云黑胶
+         Cookie，就能走官方通道 —— 更稳定、更合规，也是你的正当权益。</p>
+      <p class="small">拿 Cookie：登录 music.163.com → F12 → Application → Cookies → 复制 <code>MUSIC_U</code> 的值 →
+         程序里「设置 → 添加账号」。可以存多组。</p>
+    </div>
+  </div>
+</section>
+
+<section class="section alt" id="faq">
+  <div class="wrap narrow">
+    <h2 class="h2">常见问题</h2>
+
+    <details>
+      <summary>双击 exe 一闪而过，没有窗口？</summary>
+      <p>程序所在的<b>目录路径</b>有问题。已知 <code>D:\我的\程序\deepseek harness work\</code>
+         及其子目录下会出现这种情况（实测 100% 复现），原因是该环境下 pythonnet 加载
+         <code>Python.Runtime.dll</code> 失败。把整个文件夹剪切到别处即可。</p>
+      <p>除此之外，纯 ASCII、中文、带空格、长短路径都测试过，全部正常。</p>
+    </details>
+
+    <details>
+      <summary>提示「所有音源通道都没能取到直链」？</summary>
+      <p>三级通道全挂了。常见原因是第三方聚合接口临时限流或停止服务，或者这首歌在各个
+         平台都需要付费购买。处理办法：点「重试」；到设置里点「测试」检查 Cookie 是否
+         还有效；如果聚合接口长期不可用，就配一个自己的 VIP 账号走官方通道。</p>
+    </details>
+
+    <details>
+      <summary>只有 128K，拿不到无损？</summary>
+      <p>界面上会显示实际拿到的音质。如果显示「酷我 128K」，说明前两级通道都没成功，
+         降级到了兜底源。配一个网易云黑胶 VIP 账号走官方通道即可拿到无损。</p>
+    </details>
+
+    <details>
+      <summary>为什么不用 Mp3tag 写标签？</summary>
+      <p>Mp3tag 官方文档写得很明确：<i>"Mp3tag is built as an interactive program, further
+         commands are currently not planned."</i> 它只有 <code>/fp</code> 和 <code>/fn</code>
+         两个命令行参数，<b>没有任何打标签的命令行接口</b>，无法批处理。</p>
+      <p>所以本程序用 <code>mutagen</code> 直接读写标签 —— 做的事和 Mp3tag 内部完全一样，
+         生成的都是标准格式，随时可以丢进 Mp3tag 复核或再编辑。</p>
+    </details>
+
+    <details>
+      <summary>会封号吗？</summary>
+      <p>正常使用频率下没有发现问题。但请不要用它高频批量抓取 —— 那既可能触发风控，
+         也会给第三方服务造成负担。</p>
+    </details>
+
+    <details>
+      <summary>能放到手机里听吗？</summary>
+      <p>可以。下载完把 <code>D:\音乐下载\</code> 里的文件拷到手机即可。长期听建议选
+         「MP3 320K」（体积小、兼容性好）；归档收藏选「FLAC 无损」。</p>
+    </details>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap narrow">
+    <div class="warn">
+      <h3>使用须知</h3>
+      <ul>
+        <li>本工具仅供<b>个人学习与技术研究</b>使用，请勿用于商业用途或大规模分发。</li>
+        <li>请<b>只下载你有权获取的内容</b>。通过第三方接口获取需付费的会员内容属于灰色地带，
+            由此产生的一切后果由使用者自行承担。</li>
+        <li>推荐做法：配置你自己<b>已经付费购买</b>的 VIP 账号走官方通道。</li>
+        <li>本项目不包含、不托管任何音乐文件。</li>
+        <li>第三方接口与本项目无关，其可用性和行为随时可能变化。</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-in">
+      <div>
+        <img src="img/icon.png" alt="" width="24" height="24">
+        <span>音乐下载器</span>
+        <span class="dim">MIT License</span>
+      </div>
+      <div class="foot-links">
+        <a href="https://github.com/nishicouqie/music-downloader">源码</a>
+        <a href="https://github.com/nishicouqie/music-downloader/releases/latest">下载</a>
+        <a href="https://github.com/nishicouqie/music-downloader/issues">反馈</a>
+      </div>
+    </div>
+    <p class="dis">界面用纯 HTML/CSS/JS 手写 · 标签读写由 mutagen 完成 · 窗口由 pywebview 提供</p>
+  </div>
+</footer>
+
+</body>
+</html>

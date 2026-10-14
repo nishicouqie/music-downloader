@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>音乐下载器</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app">
+
+  <!-- ================= 顶栏 ================= -->
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
+             stroke-linecap="round" stroke-linejoin="round">
+          <path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/>
+        </svg>
+      </span>
+      <span class="brand-name">音乐下载器</span>
+    </div>
+    <div class="topbar-right">
+      <button class="chip" id="btnOutDir" title="点击更改输出目录">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+             stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+        </svg>
+        <span id="outDirText">D:\音乐下载</span>
+      </button>
+      <button class="icon-btn" id="btnSettings" title="设置">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+             stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="3"/>
+          <path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1A1.7 1.7 0 0 0 9 19.4a1.7 1.7 0 0 0-1.9.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.9 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1A1.7 1.7 0 0 0 4.6 9a1.7 1.7 0 0 0-.3-1.9l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.9.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.9-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.9V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <main class="main">
+
+    <!-- ================= 搜索区 ================= -->
+    <section class="search-panel">
+      <div class="search-row">
+        <div class="search-wrap">
+          <svg class="search-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+               stroke-width="2" stroke-linecap="round">
+            <circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/>
+          </svg>
+          <input id="q" type="text" autocomplete="off" spellcheck="false"
+                 placeholder="输入歌名 / 歌手，或直接粘贴网易云歌曲链接">
+          <button class="input-clear" id="btnClear" hidden aria-label="清空">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                 stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+          </button>
+        </div>
+        <button class="btn btn-primary" id="btnSearch">
+          <span class="btn-label">搜索</span>
+          <span class="spinner" hidden></span>
+        </button>
+      </div>
+
+      <div class="options-row">
+        <div class="segmented" id="segFormat" role="tablist">
+          <button data-v="flac">FLAC 无损</button>
+          <button data-v="both">两者都要</button>
+          <button data-v="mp3">MP3 320K</button>
+        </div>
+        <button class="chip chip-status" id="sourceChip">
+          <span class="dot"></span><span id="sourceText">检查账号…</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- ================= 搜索结果 ================= -->
+    <section class="panel" id="resultsSection" hidden>
+      <div class="panel-head">
+        <h2>搜索结果<span class="count" id="resultCount">0</span></h2>
+        <button class="link" id="btnClearResults">清空</button>
+      </div>
+      <div class="result-list" id="resultList"></div>
+    </section>
+
+    <!-- ================= 下载任务 ================= -->
+    <section class="panel">
+      <div class="panel-head">
+        <h2>下载任务<span class="count" id="jobCount">0</span></h2>
+        <button class="link" id="btnClearJobs" hidden>清空已结束</button>
+      </div>
+      <div class="job-list" id="jobList"></div>
+      <div class="empty" id="jobEmpty">
+        <div class="empty-art">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"
+               stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/>
+          </svg>
+        </div>
+        <p class="empty-title">还没有下载任务</p>
+        <p class="empty-sub">在上面搜索一首歌，点「下载」就开始了。封面、歌词时间轴、专辑信息会自动写好。</p>
+      </div>
+    </section>
+
+    <footer class="foot">
+      音源：网易云官方 VIP 通道 → 聚合接口 → gequbao 兜底　·　标签写入由内置引擎完成，无需 Mp3tag
+    </footer>
+  </main>
+</div>
+
+
+<!-- ================= 设置弹窗 ================= -->
+<div class="modal-backdrop" id="settingsModal" hidden>
+  <div class="modal modal-lg" role="dialog" aria-modal="true">
+    <div class="modal-head">
+      <h3>设置</h3>
+      <button class="icon-btn sm" data-close="settingsModal" aria-label="关闭">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+             stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+
+    <div class="modal-body">
+
+      <!-- ---- 账号 ---- -->
+      <div class="field-group">
+        <div class="group-title">
+          网易云 VIP 账号
+          <span class="group-sub">配了就能走官方无损通道；不配也能用，会自动降级到聚合接口</span>
+        </div>
+
+        <div class="cookie-list" id="cookieList"></div>
+
+        <details class="add-cookie" id="addCookieBox">
+          <summary>+ 添加账号</summary>
+          <div class="add-cookie-body">
+            <label class="field">
+              <span class="field-label">名称</span>
+              <input type="text" id="ckName" placeholder="例如：我的黑胶大号">
+            </label>
+            <label class="field">
+              <span class="field-label">MUSIC_U / Cookie</span>
+              <textarea id="ckValue" rows="3" spellcheck="false"
+                        placeholder="粘贴 MUSIC_U 的值，或整条 cookie 串"></textarea>
+            </label>
+            <div class="help-box">
+              <b>怎么拿：</b>浏览器打开并登录 <code>music.163.com</code> →
+              按 <kbd>F12</kbd> → <b>Application</b> → 左侧 <b>Cookies</b> →
+              <code>https://music.163.com</code> → 找到 <code>MUSIC_U</code> →
+              复制它的 Value 粘到上面。整条 cookie 串也可以。<br>
+              <span class="dim">Cookie 只存在本机 <code>config.json</code>，不会发往任何第三方。</span>
+            </div>
+            <div class="row-end">
+              <button class="btn btn-ghost" id="btnTestNew">先测一下</button>
+              <button class="btn btn-primary" id="btnAddCookie">保存账号</button>
+            </div>
+            <div id="testResult"></div>
+          </div>
+        </details>
+      </div>
+
+      <!-- ---- 下载 ---- -->
+      <div class="field-group">
+        <div class="group-title">下载</div>
+
+        <label class="field">
+          <span class="field-label">输出目录</span>
+          <div class="row">
+            <input type="text" id="setOutDir">
+            <button class="btn btn-ghost" id="btnPickDir">浏览…</button>
+          </div>
+        </label>
+
+        <label class="field">
+          <span class="field-label">默认格式</span>
+          <div class="segmented" id="setFormat">
+            <button data-v="flac">FLAC 无损</button>
+            <button data-v="both">两者都要</button>
+            <button data-v="mp3">MP3 320K</button>
+          </div>
+        </label>
+
+        <label class="field">
+          <span class="field-label">音源策略</span>
+          <select id="setSource">
+            <option value="official_first">官方 VIP 优先，失败自动降级（推荐）</option>
+            <option value="aggregator_only">只用聚合接口（不碰官方接口）</option>
+          </select>
+        </label>
+
+        <label class="field">
+          <span class="field-label">封面最大边长</span>
+          <div class="row row-tight">
+            <input type="number" id="setCoverMax" min="0" max="4000" step="100">
+            <span class="unit">px　<span class="dim">0 = 不限制</span></span>
+          </div>
+        </label>
+      </div>
+
+      <!-- ---- 写入内容 ---- -->
+      <div class="field-group">
+        <div class="group-title">写入内容</div>
+        <label class="switch"><input type="checkbox" id="setCover"><span></span>内嵌封面</label>
+        <label class="switch"><input type="checkbox" id="setLyrics"><span></span>内嵌歌词（含时间轴）</label>
+        <label class="switch"><input type="checkbox" id="setLrc"><span></span>另外生成同名 .lrc 文件</label>
+      </div>
+
+    </div>
+
+    <div class="modal-foot">
+      <span class="foot-note" id="cfgPath"></span>
+      <div class="row-end">
+        <button class="btn btn-ghost" data-close="settingsModal">取消</button>
+        <button class="btn btn-primary" id="btnSaveSettings">保存</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ================= 文件详情弹窗 ================= -->
+<div class="modal-backdrop" id="fileModal" hidden>
+  <div class="modal" role="dialog" aria-modal="true">
+    <div class="modal-head">
+      <h3>文件标签详情</h3>
+      <button class="icon-btn sm" data-close="fileModal" aria-label="关闭">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+             stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div class="modal-body" id="fileModalBody"></div>
+  </div>
+</div>
+
+<div class="toasts" id="toasts"></div>
+
+<script src="app.js"></script>
+</body>
+</html>

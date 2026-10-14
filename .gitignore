@@ -1,0 +1,36 @@
+# 本机配置（可能含 VIP Cookie，绝对不能提交）
+config.json
+config.*.json
+
+# 下载输出
+下载/
+音乐下载/
+*.flac
+*.mp3
+*.lrc
+!docs/**/*.mp3
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+
+# 打包产物（脚本在 scripts/ 下，不受影响）
+build/
+dist/
+*.spec
+
+# 自检 / 临时产物
+selftest.json
+*.part
+*.log
+
+# 编辑器
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
