@@ -8,7 +8,7 @@
 
 白色简约风的 Windows 桌面应用，不需要懂技术，打开就能用。
 
-[**⬇ 一键下载 Windows 版**](https://github.com/nishicouqie/music-downloader/releases/latest/download/music-downloader-win64.zip)　·　[**🌐 项目主页**](https://nishicouqie.github.io/music-downloader/)　·　[常见问题](#常见问题)
+[**⬇ 一键下载 Windows 版**](https://github.com/nishicouqie/music-downloader/releases/latest/download/music-downloader-win64.zip)　·　[**📱 Android 版**](https://github.com/nishicouqie/music-downloader-android)　·　[**🌐 项目主页**](https://nishicouqie.github.io/music-downloader/)　·　[常见问题](#常见问题)
 
 ![界面预览](docs/img/done.png)
 
@@ -246,6 +246,15 @@ python -m PyInstaller --noconfirm --clean --windowed ^
 - [mutagen](https://mutagen.readthedocs.io/) —— 音频标签读写
 - [pywebview](https://pywebview.flowrl.com/) —— 原生窗口
 - 界面用纯 HTML/CSS/JS 手写，没有前端框架
+
+## 相关项目
+
+| 版本 | 说明 |
+|---|---|
+| **电脑版（Windows）**（本仓库） | 白色简约桌面应用，支持命令行批量下载 |
+| [**Android 版**](https://github.com/nishicouqie/music-downloader-android) | 手机端。会直接把文件写进系统 `Music/` 目录，播放器立刻能扫到；内置文件搬运，还能把这里配好的账号通过配置文件导入过去 |
+
+两个版本共用同一套音源逻辑和标签规范，在电脑上配好的 VIP 账号可以「导出配置文件」后导入手机版。
 
 ## License
 
